@@ -3,8 +3,8 @@
 
 # Game initialization test
 echo -n "Test game initialization"
-output=$(./maze maze_file.txt)
-if echo "$output" |grep -q "Game initialized with maze from maze_file.txt"
+./maze maze_file.txt<input.in>tmp
+if grep -q "Game initialized with maze from maze_file.txt" tmp;
 then
     echo "PASS"
 else
@@ -13,54 +13,54 @@ fi
 
 # Simulate player movement test
 echo -n "Test player move up"
-output=$(./maze maze_fle.txt)
+./maze maze_fle.txt<input.in>tmp
 # Simulate player moving up
-if echo "$output" | grep -q "Player moved up"
+if grep -q "Player moved up" tmp;
 then
     echo "PASS"
 else
     echo "FAIL"
 fi   
 echo -n "Test player move left"
-output=$(./maze maze_fle.txt)
+./maze maze_fle.txt<input.in>tmp
 # Simulate player moving left
-if echo "$output" | grep -q "Player moved left"
+if grep -q "Player moved left" tmp;
 then
     echo "PASS"
 else
     echo "FAIL
 fi
 echo -n "Test player move down"
-output=$(./maze maze_fle.txt)
+./maze maze_fle.txt<input.in>tmp
 # Simulate player moving down
-if echo "$output" | grep -q "Player moved down"
+if grep -q "Player moved down" tmp;
 then
     echo "PASS"
 else
     echo "FAIL"
 fi
 echo -n "Test player move right"
-output=$(./maze maze_fle.txt)
+./maze maze_fle.txt<input.in>tmp
 # Simulate player moving right
-if echo "$output" | grep -q "Player moved right"
+if grep -q "Player moved right" tmp;
 then 
     echo "PASS"
 else
     echo "FAIL"
 fi
 echo -n "Test player move into the wall"
-output=$(./maze maze_fle.txt)
+./maze maze_fle.txt<input.in>tmp
 # Simulate player moving into a wall
-if echo "$output" | grep -q "Cannot move into wall"
+if grep -q "Cannot move into wall" tmp;
 then
     echo "PASS"
 else
     echo "FAIL"
 fi
 echo -n "Test player move off the map"
-output=$(./maze maze_fle.txt)
+./maze maze_fle.txt<input.in>tmp
 # Simulate player moving off the map
-if echo "$output" | grep -q "Cannot move off map"
+if grep -q "Cannot move off map" tmp;
 then
     echo "PASS"
 else
@@ -69,8 +69,8 @@ fi
 
 # Simulate displaying the map test
 echo -n "Test displaying the map"
-output=$(echo "M" | ./maze maze_file.txt)
-if echo "$output" | grep -q "X" # Player's curret location
+echo "M" | ./maze maze_file.txt<input.in>tmp
+if grep -q "X" tmp; # Player's curret location
 then
     echo "PASS"
 else
@@ -79,8 +79,8 @@ fi
 
 # Simulate reaching the exit test
 echo -n "Test teaching the exit"
-output=$(./maze maze_file.txt)
-if echo "$output" | grep -q " Reached E and you have won "
+./maze maze_file.txt<input.in>tmp
+if grep -q " Reached E and you have won " tmp;
 then 
     echo "PASS"
 else
@@ -89,8 +89,8 @@ fi
 
 # Simulate invalid move test
 echo -n "Test invalid move"
-output=$(echo "B" | ./maze maze_file.txt) # Assuming 'B' is an invalid move
-if echo "$output" | grep -q " It is an invalid move "
+echo "B" | ./maze maze_file.txt<input.in>tmp   # Assuming 'B' is an invalid move
+if grep -q " It is an invalid move " tmp;
 then
     echo "PASS"
 else
@@ -106,8 +106,8 @@ test_invalid_movement
 
 # Check if expected output function is in the command output
 echo -n "Check if win"
-output=$(./maze maze_file.txt)
-if echo "$output" | grep -q "$1";
+./maze maze_file.txt<input.in>tmp
+if grep -q "$1" tmp;
 then
     echo "PASS"
 else
