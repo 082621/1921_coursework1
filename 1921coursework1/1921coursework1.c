@@ -67,13 +67,15 @@ void initialize_maze(Maze *maze, const char *filename){
 }
 //Function to find start position in the maze
 void find_start_position(Maze *maze){
-    //find 'S' in the maze->grid
+    //if find 'S' in the maze->grid
     //set maze->start.x and maze->start.y
+    //else raise error: maze does not have start point (S)
 }
 //Function to find exit position in the maze
 void find_exit_position(Maze *maze){
     //find 'E' in the maze->grid
     //set maze->exit.x and maze->exit.y
+    //else raise error: maze does not have start point (E)
 }
 //Function to print the maze
 void print_maze(const Maze *maze){
@@ -83,6 +85,8 @@ void print_maze(const Maze *maze){
 void player_movement(Player *player, char direction, const Maze *maze){
     //move the player->current position based on direction
     //make sure the movement doesn't go through walls or out of bounds
+    //if the movement hit walls: raise cannot move into wall
+    //if the movement out of bounds: cannot move into wall
 }
 //Function to print player's current position
 void print_player_position(const Maze *maze){
@@ -91,5 +95,7 @@ void print_player_position(const Maze *maze){
 //Function to check if the player has won the maze game
 int check_if_win(const Player *player, const Maze *maze){
     //Check if player->current is the same as maze->exit
-    //if player has reached exit , return 1, else, return 0
+    //if player has reached exit
+    //return 1
+    //else, return 0
 }
